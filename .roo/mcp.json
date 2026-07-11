@@ -1,0 +1,11 @@
+{
+	"mcpServers": {
+		"unity": {
+			"command": "C:/Users/Администратор/.unity/relay/relay_win.exe",
+			"args": [
+			  "--mcp"
+			],
+			"disabled": false
+		  }	  
+	}
+}
