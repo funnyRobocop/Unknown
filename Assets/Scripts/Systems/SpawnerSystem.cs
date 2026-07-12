@@ -32,12 +32,14 @@ public partial struct SpawnerSystem : ISystem
             // Генерируем случайную позицию на плоскости
             float3 randomPosition = new float3(
                 random.NextFloat(spawner.MinBound.x, spawner.MaxBound.x), 
-                0f,
+                random.NextFloat(spawner.MinBound.y, spawner.MaxBound.y), 
                 random.NextFloat(spawner.MinBound.z, spawner.MaxBound.z)
             );
             //UnityEngine.Debug.Log(randomPosition);
             // Задаем позицию через установку компонента LocalTransform
             ecb.SetComponent(newEnemy, LocalTransform.FromPosition(randomPosition));
+            var randomStartFrame = random.NextFloat(0f, 6.28318f);
+            ecb.SetComponent(newEnemy, new AnimationFrameComponent { Value = randomStartFrame });
         }
     }
 }

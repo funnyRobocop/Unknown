@@ -7,9 +7,11 @@ public class UnitAuthoring : MonoBehaviour
     public float startHealth;
     public float maxHealth;
     public float regenRate;
+    public float radiationRate;
 
     public Vector3 startDir;
     public Vector3 startSpeed;
+    public float startAnimationSpeed;
 
     // Вложенный класс Baker автоматически подхватывается Unity в SubScene
     public class UnitBaker : Baker<UnitAuthoring>
@@ -33,9 +35,15 @@ public class UnitAuthoring : MonoBehaviour
 
             AddComponent<IsUnitTag>(entity);
             AddComponent<IsAliveTag>(entity); // На старте юнит живой, добавляем тег
-            AddBuffer<DamageBufferElement>(entity); // Инициализируем пустой буфер на сущности            
+            AddBuffer<DamageBufferElement>(entity); // Инициализируем пустой буфер на сущности    
+
+
             AddComponent(entity, new MovementDirectionComponent { Value = authoring.startDir });
             AddComponent(entity, new MovementSpeedComponent { Value = authoring.startSpeed });
+
+            var random = new Unity.Mathematics.Random(54321);
+            AddComponent(entity, new AnimationFrameComponent { Value = random.NextFloat(0f, 6.28318f) });
+            AddComponent(entity, new AnimationSettingsComponent { AnimationSpeed = authoring.startAnimationSpeed });
         }
     }
 }
