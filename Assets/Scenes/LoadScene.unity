@@ -412,7 +412,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a693f1465a1c19343a24d226a61d5122, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerClickDamage
-  damage: 10
+  damage: 100
 --- !u!4 &749109915
 Transform:
   m_ObjectHideFlags: 0

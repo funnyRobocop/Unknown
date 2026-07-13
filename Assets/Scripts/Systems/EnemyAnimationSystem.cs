@@ -1,6 +1,7 @@
 using Unity.Burst;
 using Unity.Entities;
 
+[UpdateInGroup(typeof(PresentationSystemGroup))]
 [BurstCompile]
 public partial struct EnemyAnimationSystem : ISystem
 {

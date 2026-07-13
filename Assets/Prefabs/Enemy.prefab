@@ -49,9 +49,9 @@ MonoBehaviour:
   maxHealth: 1000
   regenRate: 2.5
   radiationRate: 15
-  startDir: {x: 0, y: 0, z: 0}
-  startSpeed: {x: 0, y: 0, z: 0}
-  startAnimationSpeed: 0
+  startDir: {x: 1, y: 0, z: 1}
+  startSpeed: {x: 1, y: 0, z: 10}
+  startAnimationSpeed: 2
 --- !u!1001 &2436841647802454184
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -23,10 +23,11 @@ public partial struct MovementJob : IJobEntity
         // В Burst нельзя использовать обычный UnityEngine.Random, поэтому используем математический шум.
         float noiseInput = ElapsedTime + transform.Position.x + transform.Position.z;
         float randomX = math.sin(noiseInput * 5.0f);
+        float randomY = math.tan(noiseInput * 2.5f);
         float randomZ = math.cos(noiseInput * 1.5f);
 
         // Плавно подмешиваем случайный вектор к текущему направлению
-        float3 randomDir = new float3(randomX, 0, randomZ);
+        float3 randomDir = new float3(randomX, randomY, randomZ);
         direction.Value = math.normalize(direction.Value + randomDir * DeltaTime * 0.5f);
 
         // 3. Разворачиваем куб «лицом» в сторону его движения

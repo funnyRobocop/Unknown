@@ -41,8 +41,7 @@ public class UnitAuthoring : MonoBehaviour
             AddComponent(entity, new MovementDirectionComponent { Value = authoring.startDir });
             AddComponent(entity, new MovementSpeedComponent { Value = authoring.startSpeed });
 
-            var random = new Unity.Mathematics.Random(54321);
-            AddComponent(entity, new AnimationFrameComponent { Value = random.NextFloat(0f, 6.28318f) });
+            AddComponent(entity, new AnimationFrameComponent { Value = 0f });
             AddComponent(entity, new AnimationSettingsComponent { AnimationSpeed = authoring.startAnimationSpeed });
         }
     }
