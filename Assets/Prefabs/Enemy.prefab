@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2988982834329510275}
   - component: {fileID: 1399377673177431535}
+  - component: {fileID: 6924902190372764219}
+  - component: {fileID: 5222842393670129322}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -49,9 +51,42 @@ MonoBehaviour:
   maxHealth: 1000
   regenRate: 2.5
   radiationRate: 15
-  startDir: {x: 1, y: 0, z: 1}
-  startSpeed: {x: 1, y: 0, z: 10}
+  startDir: {x: 0, y: 0, z: 0}
+  startSpeed: {x: 1, y: 1, z: 1}
   startAnimationSpeed: 2
+--- !u!65 &6924902190372764219
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1537185700154609425}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.5, y: 2, z: 1.5}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5222842393670129322
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1537185700154609425}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ea07ed350df3bb46a1abd70c7d430c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EntityReference
 --- !u!1001 &2436841647802454184
 PrefabInstance:
   m_ObjectHideFlags: 0

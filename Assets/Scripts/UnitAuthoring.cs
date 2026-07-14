@@ -21,6 +21,13 @@ public class UnitAuthoring : MonoBehaviour
             // Получаем ссылку на создаваемую сущность
             Entity entity = GetEntity(TransformUsageFlags.Dynamic);
 
+            // Находим компонент на GameObject префаба во время запекания и связываем его
+            var reference = authoring.GetComponent<EntityReference>();
+            if (reference != null)
+            {
+                reference.LinkedEntity = entity;
+            }
+
             // Добавляем компоненты на сущность
             AddComponent(entity, new HealthComponent 
             { 

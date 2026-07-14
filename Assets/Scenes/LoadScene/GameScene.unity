@@ -164,9 +164,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpawnerAuthoring
   enemyPrefab: {fileID: 1537185700154609425, guid: 994834a7e4903134e80d364edf21d9e7, type: 3}
-  amountToSpawn: 10000
-  minBound: {x: -100, y: -100, z: -100}
-  maxBound: {x: 100, y: 100, z: 100}
+  amountToSpawn: 100
+  minBound: {x: -10, y: -10, z: -10}
+  maxBound: {x: 10, y: 10, z: 10}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

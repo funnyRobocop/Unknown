@@ -13,7 +13,7 @@ public partial struct AnimationJob : IJobEntity
     {
         // Увеличиваем значение кадра/времени для шейдера
         animFrame.Value += DeltaTime * settings.AnimationSpeed;
-
+        //UnityEngine.Debug.Log($"AnimationJob: animFrame.Value = {animFrame.Value}, DeltaTime = {DeltaTime}, AnimationSpeed = {settings.AnimationSpeed}");
         // Чтобы значение не росло бесконечно, зациклим его (например, по периоду синуса 2*Pi)
         if (animFrame.Value > 6.28318f)
         {
