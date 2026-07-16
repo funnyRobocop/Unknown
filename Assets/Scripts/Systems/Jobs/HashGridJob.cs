@@ -10,7 +10,7 @@ public partial struct HashGridJob : IJobEntity
 
     private void Execute(Entity entity, in LocalTransform transform, in IsAliveTag isAlive, in IsUnitTag isUnit)
     {
-        int hash = SpatialHashGrid.GetCellHash(transform.Position);
+        var hash = SpatialHashGrid.GetCellHash(transform.Position);
         GridMapWriter.Add(hash, new EnemyGridData { Entity = entity, Position = transform.Position });
     }
 }

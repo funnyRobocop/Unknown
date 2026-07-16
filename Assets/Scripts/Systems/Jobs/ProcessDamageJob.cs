@@ -15,7 +15,7 @@ public partial struct ProcessDamageJob : IJobEntity
 
         // Суммируем весь пришедший урон за кадр
         float totalDamage = 0;
-        for (int i = 0; i < damageBuffer.Length; i++)
+        for (var i = 0; i < damageBuffer.Length; i++)
         {
             totalDamage += damageBuffer[i].Value;
         }

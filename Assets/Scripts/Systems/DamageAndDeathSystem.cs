@@ -8,14 +8,14 @@ public partial struct DamageAndDeathSystem : ISystem
     [BurstCompile]
     public void OnUpdate(ref SystemState state)
     {
-        // 1. Берем фабрику команд из стандартной группы систем. 
+        // Берем фабрику команд из стандартной группы систем. 
         // EndSimulationEntityCommandBufferSystem выполнит наши команды в самом конце кадра.
         var ecbSingleton = SystemAPI.GetSingleton<EndSimulationEntityCommandBufferSystem.Singleton>();
         
         // Создаем сам буфер команд, привязанный к текущему кадру
         var ecb = ecbSingleton.CreateCommandBuffer(state.WorldUnmanaged).AsParallelWriter();
 
-        // 2. Запускаем задачу обработки урона
+        // Запускаем задачу обработки урона
         var damageJob = new ProcessDamageJob
         {
             Ecb = ecb

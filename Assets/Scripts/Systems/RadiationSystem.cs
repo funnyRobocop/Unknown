@@ -2,7 +2,6 @@ using Unity.Burst;
 using Unity.Entities;
 
 [BurstCompile]
-// Эта система должна отработать ДО того, как DamageAndDeathSystem очистит и применит буферы
 [UpdateBefore(typeof(DamageAndDeathSystem))] 
 public partial struct RadiationSystem : ISystem
 {

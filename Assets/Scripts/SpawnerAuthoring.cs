@@ -12,7 +12,7 @@ public class SpawnerAuthoring : MonoBehaviour
     {
         public override void Bake(SpawnerAuthoring authoring)
         {
-            Entity entity = GetEntity(TransformUsageFlags.Dynamic);
+            var entity = GetEntity(TransformUsageFlags.Dynamic);
             AddComponent(entity, new SpawnerComponent
             {
                 // конвертировуем GameObject-префаб в ECS-сущность

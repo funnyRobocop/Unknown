@@ -13,7 +13,7 @@ public partial struct EnemyAnimationSystem : ISystem
             DeltaTime = SystemAPI.Time.DeltaTime
         };
 
-        // Традиционно параллелим задачу на все ядра
+        // параллелим задачу на все ядра
         state.Dependency = animationJob.ScheduleParallel(state.Dependency);
     }
 }

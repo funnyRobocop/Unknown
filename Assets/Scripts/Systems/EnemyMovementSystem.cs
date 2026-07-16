@@ -30,7 +30,7 @@ public partial struct EnemyMovementSystem : ISystem
         
         // Получаем запрос на всех живых 
         var enemyQuery = SystemAPI.QueryBuilder().WithAll<LocalTransform, IsAliveTag, IsUnitTag>().Build();
-        int enemyCount = enemyQuery.CalculateEntityCount();
+        var enemyCount = enemyQuery.CalculateEntityCount();
         
         if (enemyCount == 0) return;
         
@@ -53,7 +53,7 @@ public partial struct EnemyMovementSystem : ISystem
             DeltaTime = SystemAPI.Time.DeltaTime,
             ElapsedTime = (float)SystemAPI.Time.ElapsedTime
         };
-        // ВАЖНО: ScheduleParallel автоматически создаст барьеры безопасности (Read/Write) для _gridMap
+        // ScheduleParallel автоматически создаст барьеры безопасности (Read/Write) для _gridMap
         state.Dependency = movementJob.ScheduleParallel(state.Dependency);
     }
 }

@@ -18,14 +18,14 @@ public class GameUIManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI targetNameText;
 
     private EntityManager _entityManager;
-    private EntityQuery _aliveZombiesQuery;
+    private EntityQuery _aliveQuery;
     private Entity _selectedEntity = Entity.Null;
 
     void Start()
     {
         _entityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
 
-        _aliveZombiesQuery = _entityManager.CreateEntityQuery(
+        _aliveQuery = _entityManager.CreateEntityQuery(
             ComponentType.ReadOnly<IsUnitTag>(),
             ComponentType.ReadOnly<IsAliveTag>()
         );
@@ -33,7 +33,7 @@ public class GameUIManager : MonoBehaviour
 
     void Update()
     {
-        int aliveCount = _aliveZombiesQuery.CalculateEntityCount();
+        int aliveCount = _aliveQuery.CalculateEntityCount();
         totalAliveText.text = $"Alive Units: {aliveCount}";
 
         HandleMouseClick();

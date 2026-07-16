@@ -2,6 +2,7 @@ using Unity.Burst;
 using Unity.Entities;
 
 [BurstCompile]
+[UpdateBefore(typeof(DamageAndDeathSystem))] 
 public partial struct RegenerationSystem : ISystem
 {
     [BurstCompile]

@@ -2,7 +2,6 @@ using Unity.Burst;
 using Unity.Entities;
 using Unity.Transforms;
 using Unity.Mathematics;
-using System.Diagnostics;
 
 [BurstCompile]
 public partial struct SpawnerSystem : ISystem
@@ -22,15 +21,15 @@ public partial struct SpawnerSystem : ISystem
 
         // Запускаем цикл спавна. Так как это инициализация, мы можем сделать цикл прямо в системе,
         // но команды Instantiate будут выполняться очень быстро, так как они просто записываются в буфер.
-        var random = new Unity.Mathematics.Random(12345); // Инициализируем генератор случайных чисел
+        var random = new Random(12345); // Инициализируем генератор случайных чисел
 
-        for (int i = 0; i < spawner.AmountToSpawn; i++)
+        for (var i = 0; i < spawner.AmountToSpawn; i++)
         {
             // Команда: клонировать сущность-префаб
-            Entity newEnemy = ecb.Instantiate(spawner.EnemyPrefab);
+            var newEnemy = ecb.Instantiate(spawner.EnemyPrefab);
 
             // Генерируем случайную позицию на плоскости
-            float3 randomPosition = new float3(
+            var randomPosition = new float3(
                 random.NextFloat(spawner.MinBound.x, spawner.MaxBound.x), 
                 random.NextFloat(spawner.MinBound.y, spawner.MaxBound.y), 
                 random.NextFloat(spawner.MinBound.z, spawner.MaxBound.z)
@@ -38,7 +37,7 @@ public partial struct SpawnerSystem : ISystem
             //UnityEngine.Debug.Log(randomPosition);
             // Задаем позицию через установку компонента LocalTransform
             ecb.SetComponent(newEnemy, LocalTransform.FromPosition(randomPosition));
-            var randomStartFrame = random.NextFloat(0f, 6.28318f);
+            var randomStartFrame = random.NextFloat(0f, math.TAU);
             ecb.SetComponent(newEnemy, new AnimationFrameComponent { Value = randomStartFrame });
         }
     }

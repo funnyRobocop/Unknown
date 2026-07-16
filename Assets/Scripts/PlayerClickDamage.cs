@@ -7,7 +7,7 @@ public class PlayerClickDamage : MonoBehaviour
     private EntityManager _entityManager;
     private EntityQuery _livingUnitsQuery;
 
-    public float damage = 40f;
+    public float damage;
 
     void Start()
     {
@@ -29,12 +29,10 @@ public class PlayerClickDamage : MonoBehaviour
             // Получаем нативный массив всех сущностей, подходящих под наш запрос прямо сейчас
             using var entities = _livingUnitsQuery.ToEntityArray(Unity.Collections.Allocator.TempJob);
 
-            Debug.Log($"[Player] Наносим урон. Всего живых сущностей на сцене: {entities.Length}");
-
             // Так как мы находимся в главном потоке MonoBehaviour, мы можем писать в EntityManager напрямую
-            for (int i = 0; i < entities.Length; i++)
+            foreach (var entity in entities)
             {
-                var  buffer = _entityManager.GetBuffer<DamageBufferElement>(entities[i]);
+                var  buffer = _entityManager.GetBuffer<DamageBufferElement>(entity);
                 
                 // Наносим урон
                 buffer.Add(new DamageBufferElement { Value = damage });
